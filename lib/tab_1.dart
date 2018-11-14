@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import './book_data.dart';
 
-class TabTwoScreen extends StatelessWidget {
+class TabOneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    createPopularBooks(Book book) => FeaturedFreeBooks(
+    createFreeBooks(Book book) => FeaturedFreeBooks(
           bookName: book.name,
+          bookAuthor: book.author,
           bookImg: book.image,
           revCount: book.reviewers,
-          bookPrice: book.price,
         );
 
     final scroll = Container(
@@ -18,7 +18,7 @@ class TabTwoScreen extends StatelessWidget {
         physics: const BouncingScrollPhysics(),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: books.map((book) => createPopularBooks(book)).toList(),
+          children: books.map((book) => createFreeBooks(book)).toList(),
         ),
       ),
     );
@@ -30,18 +30,353 @@ class TabTwoScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-              child: Container(
-                width: double.infinity,
-                height: 120.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/pink.jpg'),
-                    fit: BoxFit.cover,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0, top: 18.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 24.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Text(
+                            'Recommended',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 28.0,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            'Browse',
+                            style: TextStyle(
+                              color: Color(0xFFBBCCCC),
+                              fontSize: 18.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  borderRadius: BorderRadius.circular(6.0),
                 ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0),
+                  child: Stack(
+                    alignment: Alignment.centerLeft,
+                    children: <Widget>[
+                      Container(
+                        width: 280.0,
+                        height: 2.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFBBCCCC),
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                      ),
+                      Container(
+                        width: 140.0,
+                        height: 3.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEEBA06),
+                          borderRadius: BorderRadius.circular(2.0),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Container(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 4.0),
+                    child: Text(
+                      'Continue reading',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18.0,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    'Find more stories in your library',
+                    style: TextStyle(
+                      color: Color(0xFFBBCCCC),
+                      fontSize: 12.0,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
+                    child: Row(
+                      children: <Widget>[
+                        InkWell(
+                          child: Container(
+                            width: 160.0,
+                            height: 240.0,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              image: DecorationImage(
+                                image: AssetImage(
+                                  'images/korluk.jpg',
+                                ),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width / 2 - 20,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Körlük',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20.0,
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 8.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.star,
+                                        color: Color(0xFFEEBA06),
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Color(0xFFBBCCCC),
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Color(0xFFBBCCCC),
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Color(0xFFBBCCCC),
+                                      ),
+                                      Icon(
+                                        Icons.star,
+                                        color: Color(0xFFBBCCCC),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      InkWell(
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.visibility,
+                                              color: Color(0xFFBBCCCC),
+                                              size: 20.0,
+                                            ),
+                                            SizedBox(width: 4.0),
+                                            Text(
+                                              '813k',
+                                              style: TextStyle(
+                                                color: Color(0xFFBBCCCC),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      InkWell(
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.favorite_border,
+                                              color: Color(0xFFBBCCCC),
+                                              size: 20.0,
+                                            ),
+                                            SizedBox(width: 4.0),
+                                            Text(
+                                              '48k',
+                                              style: TextStyle(
+                                                color: Color(0xFFBBCCCC),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      InkWell(
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.cloud_queue,
+                                              color: Color(0xFFBBCCCC),
+                                              size: 20.0,
+                                            ),
+                                            SizedBox(width: 4.0),
+                                            Text(
+                                              '71',
+                                              style: TextStyle(
+                                                color: Color(0xFFBBCCCC),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 6.0),
+                                  child: Text(
+                                    'Lorem ipsum dolor sit amet, qui harum elitr an, at lobortis incor rupte per, odio agam eam an.',
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 12.0,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 14.0),
+                                  child: Row(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10.0),
+                                        child: InkWell(
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0,
+                                                vertical: 6.0),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Color(0xFFEEBA06),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(6.0),
+                                            ),
+                                            child: Text(
+                                              '#Love',
+                                              style: TextStyle(
+                                                color: Color(0xFFEEBA06),
+                                                fontSize: 10.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10.0),
+                                        child: InkWell(
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0,
+                                                vertical: 6.0),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Color(0xFFEEBA06),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(6.0),
+                                            ),
+                                            child: Text(
+                                              '#Drama',
+                                              style: TextStyle(
+                                                color: Color(0xFFEEBA06),
+                                                fontSize: 10.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(right: 10.0),
+                                        child: InkWell(
+                                          child: Container(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 10.0,
+                                                vertical: 6.0),
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Color(0xFFEEBA06),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(6.0),
+                                            ),
+                                            child: Text(
+                                              '#Art',
+                                              style: TextStyle(
+                                                color: Color(0xFFEEBA06),
+                                                fontSize: 10.0,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Row(
+                      children: <Widget>[
+                        Stack(
+                          alignment: Alignment.centerLeft,
+                          children: <Widget>[
+                            Container(
+                              width: 100,
+                              height: 2.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFBBCCCC),
+                                borderRadius: BorderRadius.circular(2.0),
+                              ),
+                            ),
+                            Container(
+                              width: 27.0,
+                              height: 3.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEEBA06),
+                                borderRadius: BorderRadius.circular(2.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: 5.0,
+                        ),
+                        Text('27%',
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 12.0,
+                            )),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
             Container(
@@ -54,7 +389,7 @@ class TabTwoScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          'Popular Books',
+                          'Featured Free Books',
                           style: TextStyle(
                             fontSize: 18.0,
                             fontWeight: FontWeight.bold,
@@ -77,162 +412,7 @@ class TabTwoScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(
-                          'You may also like',
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        FlatButton(
-                          child: Text(
-                            'View All',
-                            style: TextStyle(
-                              color: Color(0xFFEEBA06),
-                              fontSize: 14.0,
-                            ),
-                          ),
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                  ),
-                  new MayLikeBooks(
-                    bookImage: 'images/korluk.jpg',
-                    bookName: 'Körlük',
-                  ),
-                  new MayLikeBooks(
-                    bookImage: 'images/cani.jpg',
-                    bookName: 'Cani',
-                  ),
-                  new MayLikeBooks(
-                    bookImage: 'images/ben_malala.jpg',
-                    bookName: 'Ben, Malala',
-                  ),
-                ],
-              ),
-            ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class MayLikeBooks extends StatelessWidget {
-
-  final String bookImage;
-  final String bookName;
-
-  MayLikeBooks({
-    Key key, this.bookImage, this.bookName,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-      child: Container(
-        height: 140.0,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(6.0),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(0.2, 1.0),
-              blurRadius: 5.0,
-              color: Colors.black26,
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Row(
-            children: <Widget>[
-              Container(
-                width: 80.0,
-                height: 120.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage(bookImage),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-              ),
-              SizedBox(
-                width: 10.0,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Text(
-                    bookName,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 22.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Text(
-                    'Lorem ipsum dolor sit amet, qui harum\nelitr an, at lobortis incor rupte per, odio\nagam eam an.',
-                    style: TextStyle(
-                      color: Color(0xFFBBCCCC),
-                      fontSize: 14.0,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Icon(
-                        Icons.star,
-                        color: Color(0xFFEEBA06),
-                        size: 14.0,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xFFEEBA06),
-                        size: 14.0,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xFFEEBA06),
-                        size: 14.0,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xFFEEBA06),
-                        size: 14.0,
-                      ),
-                      Icon(
-                        Icons.star,
-                        color: Color(0xFFBBCCCC),
-                        size: 14.0,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 4.0,
-                  ),
-                ],
-              ),
-            ],
-          ),
         ),
       ),
     );
@@ -243,16 +423,10 @@ class FeaturedFreeBooks extends StatelessWidget {
   final String bookImg;
   final String bookName;
   final String bookAuthor;
-  final double bookPrice;
   final num revCount;
 
   FeaturedFreeBooks(
-      {Key key,
-      this.bookImg,
-      this.bookName,
-      this.bookAuthor,
-      this.bookPrice,
-      this.revCount});
+      {Key key, this.bookImg, this.bookName, this.bookAuthor, this.revCount});
 
   @override
   Widget build(BuildContext context) {
@@ -260,11 +434,10 @@ class FeaturedFreeBooks extends StatelessWidget {
       padding: const EdgeInsets.only(right: 12.0),
       child: InkWell(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              width: 100.0,
-              height: 150.0,
+              width: 120.0,
+              height: 180.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6.0),
                 image: DecorationImage(
@@ -275,59 +448,50 @@ class FeaturedFreeBooks extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
-              height: 8.0,
-            ),
             Text(
               bookName,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 13.0,
+                fontSize: 14.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 2.0,
+            Text(
+              bookAuthor,
+              style: TextStyle(fontSize: 14.0, color: Color(0xFFE55B4E)),
             ),
             Row(
               children: <Widget>[
                 Icon(
                   Icons.star,
                   color: Color(0xFFEEBA06),
-                  size: 14.0,
+                  size: 16.0,
                 ),
                 Icon(
                   Icons.star,
                   color: Color(0xFFEEBA06),
-                  size: 14.0,
+                  size: 16.0,
                 ),
                 Icon(
                   Icons.star,
                   color: Color(0xFFEEBA06),
-                  size: 14.0,
+                  size: 16.0,
                 ),
                 Icon(
                   Icons.star,
                   color: Color(0xFFEEBA06),
-                  size: 14.0,
+                  size: 16.0,
                 ),
                 Icon(
                   Icons.star,
                   color: Color(0xFFBBCCCC),
-                  size: 14.0,
+                  size: 16.0,
                 ),
               ],
             ),
-            SizedBox(
-              height: 2.0,
-            ),
             Text(
-              '\$ ' + bookPrice.toString(),
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 12.0,
-                fontWeight: FontWeight.bold,
-              ),
+              revCount.toString() + ' reviewes',
+              style: TextStyle(color: Colors.black54, fontSize: 12.0),
             )
           ],
         ),
