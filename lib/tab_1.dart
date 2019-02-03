@@ -115,8 +115,9 @@ class TabOneScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0, bottom: 10.0),
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        InkWell(
+                        Expanded(
                           child: Container(
                             width: 160.0,
                             height: 240.0,
@@ -254,11 +255,11 @@ class TabOneScreen extends StatelessWidget {
                                     children: <Widget>[
                                       Padding(
                                         padding:
-                                            const EdgeInsets.only(right: 10.0),
+                                            const EdgeInsets.only(right: 5.0),
                                         child: InkWell(
                                           child: Container(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 10.0,
+                                                horizontal: 5.0,
                                                 vertical: 6.0),
                                             decoration: BoxDecoration(
                                               border: Border.all(
@@ -284,7 +285,7 @@ class TabOneScreen extends StatelessWidget {
                                         child: InkWell(
                                           child: Container(
                                             padding: const EdgeInsets.symmetric(
-                                                horizontal: 10.0,
+                                                horizontal: 8.0,
                                                 vertical: 6.0),
                                             decoration: BoxDecoration(
                                               border: Border.all(

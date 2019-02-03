@@ -139,9 +139,7 @@ class MayLikeBooks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
-      child: Container(
+    return Container(
         height: 140.0,
         decoration: BoxDecoration(
           color: Colors.white,
@@ -173,8 +171,10 @@ class MayLikeBooks extends StatelessWidget {
                 width: 10.0,
               ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+              //  mainAxisAlignment: MainAxisAlignment.center,
+              //  crossAxisAlignment: CrossAxisAlignment.start,
+              //  mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
                     bookName,
@@ -234,8 +234,7 @@ class MayLikeBooks extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
