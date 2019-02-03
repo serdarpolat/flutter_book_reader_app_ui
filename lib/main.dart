@@ -562,13 +562,12 @@ class CarryOutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Colors.transparent,
         ),
-        body: Padding(
+        body: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(30.0, 0.0, 30.0, 0.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -673,8 +672,7 @@ class CarryOutScreen extends StatelessWidget {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
@@ -758,10 +756,12 @@ class BookShelf extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Expanded(
+      child:Column(
       children: <Widget>[
         InkWell(
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Container(
                 width: 110.0,
@@ -791,6 +791,7 @@ class BookShelf extends StatelessWidget {
           ),
         ),
       ],
+      )
     );
   }
 }
